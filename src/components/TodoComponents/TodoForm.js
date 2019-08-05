@@ -1,4 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Form = styled.form`
+  
+  * {
+    margin: 0 2px;
+  }
+  
+  input[type=text] {
+    border-radius: 5px;
+    border: 1px solid #bcbcbc;
+  }
+`;
 
 export default class TodoForm extends React.Component {
   constructor(props) {
@@ -22,6 +35,7 @@ export default class TodoForm extends React.Component {
       'completed': false
     };
     this.addTodo(newTodo);
+    this.setState({'value': ''});
   };
 
   clear = event => {
@@ -31,11 +45,11 @@ export default class TodoForm extends React.Component {
 
   render() {
     return (
-        <form>
+        <Form>
           <input type='text' name='todoName' placeholder='Todo Title' onChange={this.updateInput} value={this.state.value} />
           <button onClick={this.submitTodo}>Submit</button>
           <button onClick={this.clear}>Clear Completed</button>
-        </form>
+        </Form>
     );
   }
 }
